@@ -1,0 +1,51 @@
+{
+  "name": "YoutubeCleaner",
+  "version": "1.0.0",
+  "description": "YoutubeCleaner is a versatile Chrome extension designed to declutter your YouTube experience by removing related videos, comments, the shorts tab, suggestions, and other distractions.",
+  "author": "YH",
+  "permissions": [
+    "notifications",
+    "https://www.youtube.com/",
+    "https://quackr.io/",
+    "http://quackr.io/",
+    "http://www.youtube.com/",
+    "storage",
+    "tabs",
+    "alarms"
+  ],
+  "background": {
+    "scripts": ["src/js/background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.youtube.com/*",
+        "https://*.youtube.com/*",
+        "http://*.quackr.io/*",
+        "https://*.quackr.io/*"
+      ],
+      "js": ["src/js/popup.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "src/images/icon-16.png",
+      "32": "src/images/icon-32.png",
+      "48": "src/images/icon-48.png",
+      "128": "src/images/icon-128.png"
+    },
+    "default_title": "YoutubeCleaner",
+    "default_popup": "src/popup.html"
+  },
+  "icons": {
+    "16": "src/images/icon-16.png",
+    "32": "src/images/icon-32.png",
+    "48": "src/images/icon-48.png",
+    "128": "src/images/icon-128.png"
+  },
+  
+  "manifest_version": 2
+}
